@@ -9,8 +9,8 @@ export const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY!, {
 });
 
 export const stripeUrl: { success_url: string; cancel_url: string } = {
-  success_url: "http://localhost:3000/checkout/success",
-  cancel_url: "http://localhost:3000/checkout/cancel",
+  success_url: "http://localhost:3000/",
+  cancel_url: "http://localhost:3000/",
 };
 
 export const stripeProduct = (item: CartProduct): StripeProduct => {

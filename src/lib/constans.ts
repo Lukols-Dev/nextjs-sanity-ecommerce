@@ -23,4 +23,4 @@ export const CATEGORY = {
   sale: "Sale",
 };
 
-export const paymentMethods = ["card", "p24"];
+export const paymentMethods = ["card", "paypal"];

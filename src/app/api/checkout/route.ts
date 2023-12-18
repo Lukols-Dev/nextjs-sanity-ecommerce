@@ -1,7 +1,5 @@
-import { paymentMethods } from "@/lib/constans";
 import { stripe, stripeProduct, stripeUrl } from "@/lib/stripe";
 import { CartProduct } from "@/types/sanity";
-import { ProductCart } from "@/types/stripe";
 import { NextResponse } from "next/server";
 
 export const POST = async (request: Request) => {
