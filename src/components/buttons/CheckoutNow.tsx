@@ -1,11 +1,10 @@
 "use client";
 
 import { useCartStore } from "@/hooks/useCartStore";
-import { Product } from "@/types/cart";
 import Button from "./Button";
 
 interface AddToCardBtnProps {
-  item?: Product;
+  item?: any;
 }
 
 const CheckoutNowBtn = ({ item }: AddToCardBtnProps) => {
