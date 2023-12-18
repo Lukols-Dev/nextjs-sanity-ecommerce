@@ -4,6 +4,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import Link from "next/link";
 import NewsletterSection from "@/components/sections/NewsletterSection";
 import { Sanity } from "@/lib/sanity";
+import Image from "next/image";
 
 export default async function Home() {
   const data = await Sanity.getCategories();
@@ -21,13 +22,23 @@ export default async function Home() {
       </section>
       <section className="py-28">
         <Container>
-          <video
+          <div className="w-full h-[500px] overflow-hidden">
+            <Image
+              src="/assets/exploreFashion.png"
+              alt="Exlpore Fashion"
+              className="h-full w-full object-cover object-center"
+              priority
+              width={500}
+              height={500}
+            />
+          </div>
+          {/* <video
             src="/assets/videos/fashion-video.mp4"
             className="w-full"
             loop
             autoPlay
             muted
-          />
+          /> */}
           <div className="flex flex-col mt-8 gap-4 items-start">
             <h2 className="text-4xl font-light">For Your Winter Adventures</h2>
             <p>

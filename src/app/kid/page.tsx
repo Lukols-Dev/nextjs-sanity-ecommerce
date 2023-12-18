@@ -10,23 +10,23 @@ const KidPage = async () => {
     CATEGORY.kid
   );
   return (
-    <section className="py-0">
-      <div className="w-full h-[700px] overflow-hidden">
-        <Image
-          src="/assets/kid-fashion1.png"
-          alt="Great Photo 1"
-          className="h-full w-full object-cover"
-          priority
-          width={500}
-          height={500}
-        />
-      </div>
+    <section className="py-10">
       <Container>
+        <div className="w-full h-[700px] overflow-hidden">
+          <Image
+            src="/assets/kid-fashion1.png"
+            alt="Great Photo 1"
+            className="h-full w-full object-cover"
+            priority
+            width={500}
+            height={500}
+          />
+        </div>
         <div className="flex flex-col gap-20">
           <div>
             <h2 className="text-4xl font-light mt-8">Winter Style</h2>
             <div className="pt-10">
-              <ListCards data={data} />
+              <ListCards data={data} isAction />
             </div>
           </div>
         </div>

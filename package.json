@@ -19,7 +19,9 @@
     "react": "^18",
     "react-dom": "^18",
     "react-spinners": "^0.13.8",
+    "resend": "^2.0.0",
     "sanity": "^3.21.3",
+    "stripe": "^14.9.0",
     "styled-components": "^6.1.1",
     "zustand": "^4.4.7"
   },

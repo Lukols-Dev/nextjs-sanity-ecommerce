@@ -3,8 +3,40 @@
 import Image from "next/image";
 import Container from "../Container";
 import Input from "../inputs/Input";
+import { FormEvent, useState } from "react";
 
 const NewsletterSection = () => {
+  const [email, setEmail] = useState<string>("");
+
+  const saveNewsletter = async () => {
+    try {
+      const send = await fetch("/api/sendEmail", {
+        method: "POST",
+        body: JSON.stringify({
+          data: {
+            from: "Acme <onboarding@resend.dev>",
+            to: email,
+            subject: "Newsletter",
+            text: "Thank you for subscribing to our newsletter.",
+            // react: EmailTemplate({ link: "customLink" }) as React.ReactElement,
+          },
+        }),
+      });
+
+      if (send.ok) {
+        setEmail("");
+      }
+    } catch (err) {
+      console.log("Error: ", err);
+    }
+  };
+
+  const handleInput = (e: FormEvent<HTMLInputElement>) => {
+    const { value }: any = e.target;
+
+    setEmail(value);
+  };
+
   return (
     <section>
       <Container>
@@ -19,9 +51,18 @@ const NewsletterSection = () => {
                 Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque
                 duis ultrices sollicitudin.
               </p>
-              <Input value="" label="E-mail" />
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                label="E-mail"
+                onChange={(e: FormEvent<HTMLInputElement>) => handleInput(e)}
+              />
             </form>
-            <button className="px-3 py-2 bg-black rounded-md text-white font-light">
+            <button
+              className="px-3 py-2 bg-black rounded-md text-white font-light"
+              onClick={saveNewsletter}
+            >
               Subscribe now
             </button>
           </div>

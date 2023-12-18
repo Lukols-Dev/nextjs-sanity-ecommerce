@@ -5,9 +5,10 @@ import CheckoutNowBtn from "./buttons/CheckoutNow";
 
 interface ListingCardProps {
   data: any;
+  isAction?: boolean;
 }
 
-const Card: React.FC<ListingCardProps> = ({ data }) => {
+const Card: React.FC<ListingCardProps> = ({ data, isAction }) => {
   return (
     <div className="col-span-1 cursor-pointer group">
       <Link href={`/${data.slug}`}>
@@ -21,9 +22,14 @@ const Card: React.FC<ListingCardProps> = ({ data }) => {
             />
           </div>
           <p className="font-semibold text-lg">{data.name}</p>
-          <p className="font-semibold text-lg">${data.price}</p>
-          <CheckoutNowBtn />
-          <AddToCardBtn item={data} />
+          {isAction ? (
+            <>
+              <p className="font-semibold text-lg">${data.price}</p>
+              <AddToCardBtn item={data} />
+            </>
+          ) : (
+            <></>
+          )}
         </div>
       </Link>
     </div>
