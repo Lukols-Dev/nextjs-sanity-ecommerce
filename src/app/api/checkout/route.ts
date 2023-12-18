@@ -1,4 +1,6 @@
 import { stripe, stripeProduct, stripeUrl } from "@/lib/stripe";
+import { CartProduct } from "@/types/sanity";
+import { ProductCart } from "@/types/stripe";
 import { NextResponse } from "next/server";
 
 export const POST = async (request: Request) => {
@@ -10,7 +12,9 @@ export const POST = async (request: Request) => {
   }
 
   try {
-    const line_items = await items.map((item: any) => stripeProduct(item));
+    const line_items = await items.map((item: CartProduct) =>
+      stripeProduct(item)
+    );
 
     const checkoutSession = await stripe.checkout.sessions.create({
       success_url: stripeUrl.success_url,

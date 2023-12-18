@@ -2,16 +2,17 @@
 
 import { useRouter } from "next/navigation";
 import Button from "./Button";
+import { ProductCart } from "@/types/stripe";
 
 interface ICheckoutNowBtnProps {
-  items?: any;
+  items?: ProductCart[];
 }
 
 const CheckoutNowBtn = ({ items }: ICheckoutNowBtnProps) => {
   const router = useRouter();
 
   const checkout = async () => {
-    if (!items || items.lenght === 0) return;
+    if (!items || items.length === 0) return;
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",

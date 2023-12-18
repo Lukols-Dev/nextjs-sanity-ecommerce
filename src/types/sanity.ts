@@ -17,3 +17,5 @@ export interface fullProduct {
   description: string;
   price_id: string;
 }
+
+export type CartProduct = simplifiedProduct & fullProduct;

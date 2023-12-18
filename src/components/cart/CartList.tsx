@@ -5,12 +5,12 @@ import { FC } from "react";
 import Image from "next/image";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { useCartStore } from "@/hooks/useCartStore";
-import { simplifiedProduct } from "@/types/sanity";
+import { CartProduct } from "@/types/sanity";
 import { urlFor } from "@/lib/sanity";
 import CheckoutNowBtn from "../buttons/CheckoutNow";
 
 interface CartListProps {
-  items: simplifiedProduct[];
+  items: CartProduct[];
   totalPrice: number;
   onClose: () => void;
 }
@@ -21,7 +21,7 @@ const CartList: FC<CartListProps> = ({ items, totalPrice, onClose }) => {
   return (
     <div className="flex h-full flex-col justify-between overflow-hidden p-1">
       <ul className="flex-grow overflow-auto py-4">
-        {items.map((item: simplifiedProduct) => (
+        {items.map((item: CartProduct) => (
           <li
             key={item._id}
             className="flex w-full flex-col border-b border-neutral-300"
@@ -36,7 +36,7 @@ const CartList: FC<CartListProps> = ({ items, totalPrice, onClose }) => {
                 </button>
               </div>
               <Link
-                href={`/products/${item.slug}`}
+                href={`/${item.slug}`}
                 onClick={onClose}
                 className="z-30 flex flex-row space-x-4"
               >
@@ -46,7 +46,7 @@ const CartList: FC<CartListProps> = ({ items, totalPrice, onClose }) => {
                     width={64}
                     height={64}
                     alt={item.name}
-                    src={urlFor(item.imageUrl).url()}
+                    src={urlFor(item.imageUrl || item.images[0]).url()}
                   />
                 </div>
 
