@@ -22,3 +22,5 @@ export const CATEGORY = {
   kid: "Kid",
   sale: "Sale",
 };
+
+export const paymentMethods = ["card", "p24"];
