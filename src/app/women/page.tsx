@@ -14,7 +14,7 @@ const WomanPage = async () => {
   return (
     <section className="py-10">
       <Container>
-        <div className="w-full h-[700px] overflow-hidden">
+        <div className="w-full h-[500px] overflow-hidden">
           <Image
             src="/assets/test-man.webp"
             alt="Great Photo 1"
