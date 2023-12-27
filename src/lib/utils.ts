@@ -13,3 +13,28 @@ export const createUrl = (
 export const upperFirstLetter = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
+
+export const endWith = (
+  array: (string | object)[],
+  endValue: string
+): any[] => {
+  let index = -1;
+
+  for (let i = 0; i < array.length; i++) {
+    const item = array[i];
+    if (
+      (typeof item === "string" && item === endValue) ||
+      (typeof item === "object" && "name" in item && item.name === endValue)
+    ) {
+      index = i;
+      break;
+    }
+  }
+
+  if (index > -1) {
+    const [item] = array.splice(index, 1);
+    array.push(item);
+  }
+
+  return array;
+};

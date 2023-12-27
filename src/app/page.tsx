@@ -5,6 +5,7 @@ import Link from "next/link";
 import NewsletterSection from "@/components/sections/NewsletterSection";
 import { Sanity } from "@/lib/sanity";
 import Image from "next/image";
+import { endWith } from "@/lib/utils";
 
 export default async function Home() {
   const data = await Sanity.getCategories();
@@ -16,7 +17,7 @@ export default async function Home() {
           <hr />
           <h2 className="text-4xl font-light mt-8">Your Style</h2>
           <div className="pt-10">
-            <ListCards data={data} />
+            <ListCards data={endWith(data, "Sale")} />
           </div>
         </Container>
       </section>
@@ -45,7 +46,7 @@ export default async function Home() {
               Our new winter collection features durable outerwear designed to
               protect and support you on the mountain.
             </p>
-            <Link href="/explore" className="px-3 py-2 border-2 rounded-full">
+            <Link href="/search" className="px-3 py-2 border-2 rounded-full">
               Find your style
             </Link>
           </div>
