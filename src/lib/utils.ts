@@ -38,3 +38,8 @@ export const endWith = (
 
   return array;
 };
+
+export const replaceScoresWithSpaces = (str?: string | null) => {
+  if (!str) return "";
+  return str.replaceAll("-", " ");
+};

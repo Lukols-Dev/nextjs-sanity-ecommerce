@@ -1,6 +1,7 @@
 import ListCards from "@/components/ListCards";
+import { defaultSort, sorting } from "@/lib/constans";
 import { Sanity } from "@/lib/sanity";
-import { upperFirstLetter } from "@/lib/utils";
+import { replaceScoresWithSpaces, upperFirstLetter } from "@/lib/utils";
 import { simplifiedProduct } from "@/types/sanity";
 
 const CategoryPage = async ({
@@ -11,18 +12,19 @@ const CategoryPage = async ({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
   const { sort } = searchParams as { [key: string]: string };
+  const { slug } = sorting.find((item) => item.slug === sort) || defaultSort;
   const collection = upperFirstLetter(params.collection);
-  // const { sortKey, reverse } = sorting.find((item) => item.slug === sort) || defaultSort;
-  // const products = await getCollectionProducts({ collection: params.collection, sortKey, reverse });
-  const data: simplifiedProduct[] = await Sanity.getDataByCategory(collection);
+  const data: simplifiedProduct[] = await Sanity.getDataByCategory(
+    collection,
+    replaceScoresWithSpaces(slug)
+  );
 
   return (
     <section>
       {data.length === 0 ? (
         <p className="py-3 text-lg">{`No products found in this collection...`}</p>
       ) : (
-        <div className="flex flex-col gap-10 pl-10">
-          <h2 className="text-4xl font-light mt-8">{collection}</h2>
+        <div className="flex flex-col gap-10">
           <ListCards data={data} isAction />
         </div>
       )}

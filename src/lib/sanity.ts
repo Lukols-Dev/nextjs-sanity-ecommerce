@@ -32,8 +32,8 @@ export function urlFor(source: any) {
 }
 
 export class Sanity {
-  static async getProducts(): Promise<simplifiedProduct[]> {
-    const query = `*[_type == "product"]  {
+  static async getProducts(sort?: string): Promise<simplifiedProduct[]> {
+    const query = `*[_type == "product"] | order(${sort}) {
       _id,
         price,
       name,
@@ -46,9 +46,10 @@ export class Sanity {
   }
 
   static async getDataByCategory(
-    category: string
+    category: string,
+    sort?: string
   ): Promise<simplifiedProduct[]> {
-    const query = `*[_type == "product" && category->name == "${category}"]  {
+    const query = `*[_type == "product" && category->name == "${category}"] | order(${sort})  {
       _id,
         price,
       name,
@@ -90,6 +91,5 @@ export class Sanity {
 export type SortFilterItem = {
   title: string;
   slug: string | null;
-  sortKey: "RELEVANCE" | "BEST_SELLING" | "CREATED_AT" | "PRICE";
-  reverse: boolean;
+  default?: true;
 };

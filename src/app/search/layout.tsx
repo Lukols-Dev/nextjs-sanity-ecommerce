@@ -1,5 +1,7 @@
 import Container from "@/components/Container";
+import FilterButton from "@/components/FilterButton";
 import FilterList from "@/components/FilterList";
+import { sorting } from "@/lib/constans";
 import { Suspense } from "react";
 
 export default function SearchLayout({
@@ -14,12 +16,13 @@ export default function SearchLayout({
           <div className="w-full pt-10 flex md:max-w-[125px]">
             <FilterList list={collection} />
           </div>
-          <div className="order-last min-h-screen w-full md:order-none">
+          <div className="flex flex-col order-last min-h-screen w-full md:order-none gap-6">
+            <div className="flex justify-between items-end w-full">
+              <h2 className="text-4xl font-light mt-8">All Products</h2>
+              <FilterButton list={sorting} />
+            </div>
             {children}
           </div>
-          {/* <div className="order-none flex-none md:order-last md:w-[125px]">
-          <FilterList list={sorting} title="Sort by" />
-        </div> */}
         </div>
       </Container>
     </Suspense>
@@ -28,15 +31,19 @@ export default function SearchLayout({
 
 const collection = [
   {
+    title: "All",
+    path: "/search",
+  },
+  {
     title: "Men",
-    path: "search/men",
+    path: "/search/men",
   },
   {
     title: "Women",
-    path: "search/women",
+    path: "/search/women",
   },
   {
     title: "Kids",
-    path: "search/kid",
+    path: "/search/kid",
   },
 ];

@@ -28,8 +28,8 @@ export default function FilterItemDropdown({ list }: { list: ListItem[] }) {
   useEffect(() => {
     list.forEach((listItem: ListItem) => {
       if (
-        ("path" in listItem && pathname === listItem.path) ||
-        ("slug" in listItem && searchParams.get("sort") === listItem.slug)
+        ("slug" in listItem && searchParams.get("sort") === listItem.slug) ||
+        "default" in listItem
       ) {
         setActive(listItem.title);
       }
@@ -42,10 +42,10 @@ export default function FilterItemDropdown({ list }: { list: ListItem[] }) {
         onClick={() => {
           setOpenSelect(!openSelect);
         }}
-        className="flex w-full items-center justify-between rounded border border-black/30 px-4 py-2 text-sm cursor-pointer"
+        className="flex min-w-[150px] items-center justify-between rounded border border-black/30 px-4 py-2 text-sm cursor-pointer"
       >
         <div>{active}</div>
-        <ChevronDownIcon className="h-4" />
+        <ChevronDownIcon className="h-4 ml-2" />
       </div>
       {openSelect && (
         <div
