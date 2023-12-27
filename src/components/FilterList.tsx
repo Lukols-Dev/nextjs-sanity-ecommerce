@@ -5,7 +5,7 @@ import { SortFilterItem } from "@/lib/sanity";
 export type ListItem = SortFilterItem | PathFilterItem;
 export type PathFilterItem = { title: string; path: string };
 
-function FilterItemList({ list }: { list: ListItem[] }) {
+export function FilterItemList({ list }: { list: ListItem[] }) {
   return (
     <>
       {list.map((item: ListItem, i) => (
@@ -30,10 +30,6 @@ export default function FilterList({
         ) : null}
         <ul className="hidden md:block">
           <FilterItemList list={list} />
-        </ul>
-        <ul className="md:hidden">
-          drop down
-          {/* <FilterItemDropdown list={list} /> */}
         </ul>
       </nav>
     </>

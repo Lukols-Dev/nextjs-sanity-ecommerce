@@ -18,6 +18,25 @@ export const menu = [
   },
 ];
 
+export const collection = [
+  {
+    title: "All",
+    path: "/search",
+  },
+  {
+    title: "Men",
+    path: "/search/men",
+  },
+  {
+    title: "Women",
+    path: "/search/women",
+  },
+  {
+    title: "Kids",
+    path: "/search/kid",
+  },
+];
+
 export const CATEGORY = {
   men: "Men",
   women: "Women",
