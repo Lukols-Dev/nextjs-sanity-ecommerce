@@ -32,6 +32,19 @@ export function urlFor(source: any) {
 }
 
 export class Sanity {
+  static async getProducts(): Promise<simplifiedProduct[]> {
+    const query = `*[_type == "product"]  {
+      _id,
+        price,
+      name,
+        "slug": slug.current,
+        "categoryName": category->name,
+        "imageUrl": images[0].asset->url
+    }`;
+    const data = await client.fetch(query);
+    return data;
+  }
+
   static async getDataByCategory(
     category: string
   ): Promise<simplifiedProduct[]> {
