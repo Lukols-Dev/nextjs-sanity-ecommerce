@@ -1,4 +1,6 @@
+import FilterButton from "@/components/FilterButton";
 import ListCards from "@/components/ListCards";
+import { sorting } from "@/lib/constans";
 import { Sanity } from "@/lib/sanity";
 import { simplifiedProduct } from "@/types/sanity";
 
@@ -11,7 +13,10 @@ const SearchPage = async () => {
         <p className="py-3 text-lg">{`No products found in this collection...`}</p>
       ) : (
         <div className="flex flex-col gap-10 pl-10">
-          <h2 className="text-4xl font-light mt-8">All Products</h2>
+          <div className="flex justify-between items-end w-full">
+            <h2 className="text-4xl font-light mt-8">All Products</h2>
+            <FilterButton list={sorting} />
+          </div>
           <ListCards data={data} isAction />
         </div>
       )}
