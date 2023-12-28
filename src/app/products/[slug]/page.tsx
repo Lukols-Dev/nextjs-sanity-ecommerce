@@ -50,7 +50,7 @@ const ProductPage = async (props: Page) => {
 
             <div className="flex gap-2 w-64">
               <AddToCardBtn item={product} />
-              <CheckoutNowBtn />
+              <CheckoutNowBtn items={[product]} />
             </div>
             <p className="mt-12 text-base text-gray-500 tracking-wide">
               {product.description}

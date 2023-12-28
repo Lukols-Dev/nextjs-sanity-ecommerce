@@ -2,10 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import Button from "./Button";
-import { CartProduct } from "@/types/sanity";
+import { CartProduct, fullProduct } from "@/types/sanity";
 
 interface ICheckoutNowBtnProps {
-  items?: CartProduct[];
+  items?: CartProduct[] | fullProduct[];
 }
 
 const CheckoutNowBtn = ({ items }: ICheckoutNowBtnProps) => {
