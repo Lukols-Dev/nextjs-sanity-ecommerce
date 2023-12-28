@@ -35,7 +35,8 @@ export class Sanity {
   static async getProducts(sort?: string): Promise<simplifiedProduct[]> {
     const query = `*[_type == "product"] | order(${sort}) {
       _id,
-        price,
+      actualPrice,
+      oldPrice,
       name,
         "slug": slug.current,
         "categoryName": category->name,
@@ -51,7 +52,8 @@ export class Sanity {
   ): Promise<simplifiedProduct[]> {
     const query = `*[_type == "product" && category->name == "${category}"] | order(${sort})  {
       _id,
-        price,
+      actualPrice,
+      oldPrice,
       name,
         "slug": slug.current,
         "categoryName": category->name,
@@ -87,13 +89,14 @@ export class Sanity {
   static async getProductDetails(slug: string): Promise<fullProduct> {
     const query = `*[_type == "product" && slug.current == "${slug}"][0] {
       _id,
-        images,
-        price,
-        name,
-        description,
-        "slug": slug.current,
-        "categoryName": category->name,
-        price_id
+      images,
+      actualPrice,
+      oldPrice,
+      name,
+      description,
+      "slug": slug.current,
+      "categoryName": category->name,
+      price_id
     }`;
     const data = await client.fetch(query);
     return data;

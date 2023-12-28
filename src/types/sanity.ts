@@ -1,7 +1,8 @@
 export interface simplifiedProduct {
   _id: string;
   imageUrl: string;
-  price: number;
+  actualPrice: number;
+  oldPrice: number;
   slug: string;
   categoryName: string;
   name: string;
@@ -10,7 +11,8 @@ export interface simplifiedProduct {
 export interface fullProduct {
   _id: string;
   images: any;
-  price: number;
+  actualPrice: number;
+  oldPrice: number;
   slug: string;
   categoryName: string;
   name: string;

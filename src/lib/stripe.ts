@@ -30,7 +30,7 @@ export const stripeProduct = (item: CartProduct): StripeProduct => {
         images: [image],
       },
       currency: "usd",
-      unit_amount: item.price * 100,
+      unit_amount: item.actualPrice * 100,
     },
     quantity: item.quantity || 1,
   };

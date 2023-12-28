@@ -20,11 +20,23 @@ const Card: React.FC<ListingCardProps> = ({ data, isAction }) => {
               src={data.imageUrl}
               alt="Listing"
             />
+            {!!data.oldPrice && (
+              <span className="absolute left-0 top-0 rounded-br-lg bg-red-500 px-3 py-1.5 text-sm uppercase tracking-wider text-white">
+                Sale
+              </span>
+            )}
           </div>
           <p className="font-semibold text-lg">{data.name}</p>
           {isAction ? (
             <>
-              <p className="font-semibold text-lg">${data.price}</p>
+              <div className="flex gap-2">
+                <p className="font-semibold text-lg">${data.actualPrice}</p>
+                {!!data.oldPrice && (
+                  <p className="text-red-500 line-through text-sm">
+                    ${data.oldPrice}
+                  </p>
+                )}
+              </div>
               <AddToCardBtn item={data} />
             </>
           ) : (

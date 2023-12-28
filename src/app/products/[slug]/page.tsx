@@ -21,7 +21,7 @@ const ProductPage = async (props: Page) => {
     <div className="bg-white py-20">
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="grid gap-8 md:grid-cols-2">
-          <ImageGallery images={product.images} />
+          <ImageGallery images={product.images} sale={!!product.oldPrice} />
           <div className="md:py-0">
             <div className="mb-2 md:mb-3">
               <span className="mb-0.5 inline-block text-gray-500">
@@ -34,11 +34,13 @@ const ProductPage = async (props: Page) => {
             <div className="mb-4">
               <div className="flex items-end gap-2">
                 <span className="text-xl font-bold text-gray-800 md:text-2xl">
-                  ${product.price}
+                  ${product.actualPrice}
                 </span>
-                <span className="mb-0.5 text-red-500 line-through">
-                  ${Number(product.price) + 30}
-                </span>
+                {product.oldPrice && (
+                  <span className="mb-0.5 text-red-500 line-through">
+                    ${product.oldPrice}
+                  </span>
+                )}
               </div>
             </div>
             <div className="mb-6 flex items-center gap-2 text-gray-500">
@@ -47,26 +49,8 @@ const ProductPage = async (props: Page) => {
             </div>
 
             <div className="flex gap-2 w-64">
-              {/* <AddToBag
-                  currency="USD"
-                  description={data.description}
-                  image={data.images[0]}
-                  name={data.name}
-                  price={data.price}
-                  key={data._id}
-                  price_id={data.price_id}
-                /> */}
               <AddToCardBtn item={product} />
               <CheckoutNowBtn />
-              {/* <CheckoutNow
-                  currency="USD"
-                  description={data.description}
-                  image={data.images[0]}
-                  name={data.name}
-                  price={data.price}
-                  key={data._id}
-                  price_id={data.price_id}
-                /> */}
             </div>
             <p className="mt-12 text-base text-gray-500 tracking-wide">
               {product.description}

@@ -58,6 +58,11 @@ export const useCartStore = create<Store>((set, get) => ({
   },
   deleteItem: (_id: string) =>
     set((state) => ({ items: state.items.filter((item) => item._id !== _id) })),
+  // totalPrice: () =>
+  //   get().items.reduce((total, item) => total + Number(item.actualPrice), 0),
   totalPrice: () =>
-    get().items.reduce((total, item) => total + Number(item.price), 0),
+    get().items.reduce(
+      (total, item) => total + Number(item.actualPrice) * (item.quantity || 1),
+      0
+    ),
 }));

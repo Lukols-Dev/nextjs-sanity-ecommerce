@@ -85,7 +85,7 @@ const CartList: FC<CartListProps> = ({ items, totalPrice, onClose }) => {
                 </div>
               </Link>
               <p className="flex items-center justify-between text-xl">
-                $ {item.price}
+                $ {item.actualPrice}
               </p>
             </div>
           </li>

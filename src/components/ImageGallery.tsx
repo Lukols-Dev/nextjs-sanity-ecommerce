@@ -7,9 +7,10 @@ import { urlFor } from "@/lib/sanity";
 
 interface IGalleryProps {
   images: any;
+  sale: boolean;
 }
 
-const ImageGallery = ({ images }: IGalleryProps) => {
+const ImageGallery = ({ images, sale }: IGalleryProps) => {
   const [bigImage, setBigImage] = useState(images[0]);
 
   const handleSmallImageClick = (image: any) => {
@@ -42,9 +43,11 @@ const ImageGallery = ({ images }: IGalleryProps) => {
           layout="fill"
           className="object-cover object-center"
         />
-        <span className="absolute left-0 top-0 rounded-br-lg bg-red-500 px-3 py-1.5 text-sm uppercase tracking-wider text-white">
-          Sale
-        </span>
+        {sale && (
+          <span className="absolute left-0 top-0 rounded-br-lg bg-red-500 px-3 py-1.5 text-sm uppercase tracking-wider text-white">
+            Sale
+          </span>
+        )}
       </div>
     </div>
   );

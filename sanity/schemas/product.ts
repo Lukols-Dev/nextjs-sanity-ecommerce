@@ -28,8 +28,13 @@ export default {
       },
     },
     {
-      name: "price",
-      title: "Price",
+      name: "actualPrice",
+      title: "Actual Price",
+      type: "number",
+    },
+    {
+      name: "oldPrice",
+      title: "Old Price",
       type: "number",
     },
     {
