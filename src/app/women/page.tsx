@@ -10,18 +10,18 @@ const WomanPage = async () => {
   const data: simplifiedProduct[] = await Sanity.getDataByCategory(
     CATEGORY.women
   );
+  const category = await Sanity.getCategoryDetails(CATEGORY.women);
 
   return (
     <section className="py-10">
       <Container>
-        <div className="w-full h-[500px] overflow-hidden">
+        <div className="w-full h-[700px] relative overflow-hidden">
           <Image
-            src="/assets/test-man.webp"
+            className="w-full h-full object-cover object-top"
+            src={category[0].mainPageImageUrl}
             alt="Great Photo 1"
-            className="h-full w-full object-cover"
             priority
-            width={500}
-            height={500}
+            fill
           />
         </div>
         <div className="flex flex-col gap-20">

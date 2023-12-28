@@ -21,5 +21,10 @@ export default {
         source: "name",
       },
     },
+    {
+      name: "pageImage",
+      type: "image",
+      title: "Category Page Image",
+    },
   ],
 };

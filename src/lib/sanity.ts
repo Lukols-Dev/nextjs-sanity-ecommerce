@@ -55,7 +55,7 @@ export class Sanity {
       name,
         "slug": slug.current,
         "categoryName": category->name,
-        "imageUrl": images[0].asset->url
+        "imageUrl": images[0].asset->url,
     }`;
     const data = await client.fetch(query);
     return data;
@@ -67,6 +67,18 @@ export class Sanity {
       "name": name,
       "imageUrl": image.asset->url,
       "slug": slug.current
+  }`;
+    const data = await client.fetch(query);
+    return data;
+  }
+
+  static async getCategoryDetails(category: string) {
+    const query = `*[_type == "category" && name == "${category}"] {
+      _id,
+      "name": name,
+      "imageUrl": image.asset->url,
+      "slug": slug.current,
+      "mainPageImageUrl": pageImage.asset->url
   }`;
     const data = await client.fetch(query);
     return data;

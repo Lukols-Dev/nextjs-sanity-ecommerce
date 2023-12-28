@@ -16,6 +16,11 @@ export const menu = [
     title: "Kids",
     path: "/kid",
   },
+  {
+    index: "4",
+    title: "Explore",
+    path: "/search",
+  },
 ];
 
 export const collection = [

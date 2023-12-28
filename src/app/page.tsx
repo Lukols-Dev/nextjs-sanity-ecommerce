@@ -23,23 +23,15 @@ export default async function Home() {
       </section>
       <section className="py-28">
         <Container>
-          <div className="w-full h-[500px] overflow-hidden">
+          <div className="w-full h-[500px] overflow-hidden relative">
             <Image
               src="/assets/exploreFashion.png"
               alt="Exlpore Fashion"
-              className="h-full w-full object-cover object-center"
+              className="object-cover object-top"
               priority
-              width={500}
-              height={500}
+              fill
             />
           </div>
-          {/* <video
-            src="/assets/videos/fashion-video.mp4"
-            className="w-full"
-            loop
-            autoPlay
-            muted
-          /> */}
           <div className="flex flex-col mt-8 gap-4 items-start">
             <h2 className="text-4xl font-light">For Your Winter Adventures</h2>
             <p>
