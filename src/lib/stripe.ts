@@ -9,8 +9,14 @@ export const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY!, {
 });
 
 export const stripeUrl: { success_url: string; cancel_url: string } = {
-  success_url: "http://localhost:3000/",
-  cancel_url: "http://localhost:3000/",
+  success_url:
+    process.env.APP_MODE === "development"
+      ? "http://localhost:3000/"
+      : process.env.APP_MODE!,
+  cancel_url:
+    process.env.APP_MODE === "development"
+      ? "http://localhost:3000/"
+      : process.env.APP_MODE!,
 };
 
 export const stripeProduct = (item: CartProduct): StripeProduct => {
