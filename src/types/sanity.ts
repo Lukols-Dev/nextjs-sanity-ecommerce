@@ -18,4 +18,6 @@ export interface fullProduct {
   price_id: string;
 }
 
-export type CartProduct = simplifiedProduct & fullProduct;
+export type CartProduct = (simplifiedProduct & fullProduct) & {
+  quantity: number;
+};

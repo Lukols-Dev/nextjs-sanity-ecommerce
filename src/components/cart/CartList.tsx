@@ -16,7 +16,20 @@ interface CartListProps {
 }
 
 const CartList: FC<CartListProps> = ({ items, totalPrice, onClose }) => {
-  const { deleteItem } = useCartStore();
+  const { deleteItem, decreaseItemQuantity, increaseItemQuantity } =
+    useCartStore();
+
+  const decrease = (e: any, id: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    decreaseItemQuantity(id);
+  };
+
+  const increase = (e: any, id: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    increaseItemQuantity(id);
+  };
 
   return (
     <div className="flex h-full flex-col justify-between overflow-hidden p-1">
@@ -52,6 +65,23 @@ const CartList: FC<CartListProps> = ({ items, totalPrice, onClose }) => {
 
                 <div className="flex flex-1 flex-col text-base">
                   <span className="leading-tight">{item.name}</span>
+                  <div className="flex gap-2 items-center">
+                    <button
+                      className="border-2 px-3 py-2 bg-neutral-300 rounded-md cursor-pointer hover:bg-neutral-400"
+                      onClick={(e) => decrease(e, item._id)}
+                    >
+                      -
+                    </button>
+                    <span className="w-[50px] text-center">
+                      {item.quantity}
+                    </span>
+                    <button
+                      className="border-2 px-3 py-2 bg-neutral-300 rounded-md cursor-pointer hover:bg-neutral-400"
+                      onClick={(e) => increase(e, item._id)}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               </Link>
               <p className="flex items-center justify-between text-xl">
