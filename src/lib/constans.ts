@@ -40,6 +40,10 @@ export const collection = [
     title: "Kids",
     path: "/search/kid",
   },
+  {
+    title: "Sale",
+    path: "/search/sale",
+  },
 ];
 
 export const CATEGORY = {
@@ -61,10 +65,10 @@ export const sorting: SortFilterItem[] = [
   defaultSort,
   {
     title: "Price: Low to high",
-    slug: "price-asc",
+    slug: "actualPrice-asc",
   },
   {
     title: "Price: High to low",
-    slug: "price-desc",
+    slug: "actualPrice-desc",
   },
 ];

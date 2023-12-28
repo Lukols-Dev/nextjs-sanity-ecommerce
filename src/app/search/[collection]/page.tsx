@@ -14,10 +14,16 @@ const CategoryPage = async ({
   const { sort } = searchParams as { [key: string]: string };
   const { slug } = sorting.find((item) => item.slug === sort) || defaultSort;
   const collection = upperFirstLetter(params.collection);
-  const data: simplifiedProduct[] = await Sanity.getDataByCategory(
-    collection,
-    replaceScoresWithSpaces(slug)
-  );
+  let data: simplifiedProduct[];
+
+  if (collection !== "Sale") {
+    data = await Sanity.getDataByCategory(
+      collection,
+      replaceScoresWithSpaces(slug)
+    );
+  } else {
+    data = await Sanity.getSaleProducts();
+  }
 
   return (
     <section>

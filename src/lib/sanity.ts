@@ -46,6 +46,20 @@ export class Sanity {
     return data;
   }
 
+  static async getSaleProducts(sort?: string): Promise<simplifiedProduct[]> {
+    const query = `*[_type == "product" && oldPrice != null] {
+      _id,
+      actualPrice,
+      oldPrice,
+      name,
+        "slug": slug.current,
+        "categoryName": category->name,
+        "imageUrl": images[0].asset->url
+    }`;
+    const data = await client.fetch(query);
+    return data;
+  }
+
   static async getDataByCategory(
     category: string,
     sort?: string
