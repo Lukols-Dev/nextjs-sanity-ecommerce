@@ -47,7 +47,7 @@ export class Sanity {
   }
 
   static async getSaleProducts(sort?: string): Promise<simplifiedProduct[]> {
-    const query = `*[_type == "product" && oldPrice != null] {
+    const query = `*[_type == "product" && oldPrice != null] | order(${sort}) {
       _id,
       actualPrice,
       oldPrice,

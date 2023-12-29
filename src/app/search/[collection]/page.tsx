@@ -22,7 +22,7 @@ const CategoryPage = async ({
       replaceScoresWithSpaces(slug)
     );
   } else {
-    data = await Sanity.getSaleProducts();
+    data = await Sanity.getSaleProducts(replaceScoresWithSpaces(slug));
   }
 
   return (
