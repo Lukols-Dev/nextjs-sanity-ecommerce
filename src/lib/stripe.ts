@@ -12,11 +12,11 @@ export const stripeUrl: { success_url: string; cancel_url: string } = {
   success_url:
     process.env.APP_MODE === "development"
       ? "http://localhost:3000/"
-      : process.env.APP_MODE!,
+      : process.env.HOME_URL!,
   cancel_url:
     process.env.APP_MODE === "development"
       ? "http://localhost:3000/"
-      : process.env.APP_MODE!,
+      : process.env.HOME_URL!,
 };
 
 export const stripeProduct = (item: CartProduct): StripeProduct => {
